@@ -1,0 +1,30 @@
+Label {
+    -fx-font: 12 "SF-Arabic";
+    -fx-text-fill: #f2f4f5;
+}
+
+.textbox {
+    -fx-background-color: #172429;
+    -fx-pref-height: 55;
+    -fx-font-family: "SF-Arabic";
+    -fx-font-size: 17;
+    -fx-text-fill: #f2f4f5;
+    -fx-start-margin: 100;
+    -fx-prompt-text-fill: #82959B;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 20, 20, 20, 20;
+    -fx-border-radius: 20, 20, 20, 20;
+}
+.submmitButton{
+    -fx-background-color: #D93A00;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-text-fill: #f2f4f5;
+    -fx-pref-height: 40;
+    -fx-font: 15 "SF-Arabic";
+    -fx-font-weight: bold;
+    -fx-spacing: 50;
+}
+.submmitButton:hover{
+    -fx-background-color: #e23d00;
+}

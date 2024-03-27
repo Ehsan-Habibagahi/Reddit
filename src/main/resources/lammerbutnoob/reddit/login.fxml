@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioButton?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="lammerbutnoob.reddit.SignUpController" alignment="TOP_CENTER" spacing="10">
+    <stylesheets>
+        <URL value="@style.css"/>
+        <URL value="@signup.css"/>
+    </stylesheets>
+    <padding>
+        <Insets bottom="20.0" left="300" right="300.0" top="35.0"/>
+    </padding>
+    <ImageView fitWidth="90" fitHeight="90">
+        <image>
+            <Image url="@reddit-logo-round.png"/>
+        </image>
+    </ImageView>
+    <Label fx:id="title" text="Login" BorderPane.alignment="CENTER"/>
+    <Label text="Welcom back!">
+        <padding>
+            <Insets bottom="20"/>
+        </padding>
+    </Label>
+    <TextField styleClass="textbox" fx:id="emailField" promptText="Email" onKeyReleased="#checkEmailValidation"/>
+    <PasswordField styleClass="textbox" fx:id="passwordField" promptText="Password"
+                   onKeyReleased="#checkPassValidation"/>
+    <Pane prefHeight="20"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Line startX="0" endX="70" stroke="#f2f4f5"/>
+        <Label fx:id="signUpLabel" text="Or sign up" style="-fx-text-fill: #4fbcff;" onMouseClicked="#signup"/>
+        <Line startX="0" endX="70" stroke="#f2f4f5"/>
+    </HBox>
+    <Button fx:id="submmitSignUp" styleClass="submmitButton" text="login" disable="true" onAction="#submmitLogin"/>
+</VBox>

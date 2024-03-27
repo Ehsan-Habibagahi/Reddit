@@ -1,0 +1,31 @@
+#signUpLabel:hover{
+    -fx-cursor: hand;
+}
+VBox {
+    -fx-background-color: #0F1A1C;
+}
+#title {
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-text-fill: #f2f4f5;
+}
+.radioButton{
+    -fx-text-fill: #f2f4f5;
+    -fx-font: 13 "SF-Arabic";
+    -fx-mark-color: #82959B;
+}
+.radioButton .radio{
+    -fx-background-color: #172429;
+    -fx-padding: 3;
+    -fx-border-radius: 15;
+    -fx-background-image: null;
+    -fx-border-color: #82959B;
+}
+.radioButton .dot{
+    -fx-background-radius: 15;
+    -fx-padding: 8;
+    /*-fx-background-color: transparent;*/
+}
+.radioButton .radio:selected{
+-fx-background-image: null;
+}
