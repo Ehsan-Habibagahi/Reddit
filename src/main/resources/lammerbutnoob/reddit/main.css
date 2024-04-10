@@ -1,0 +1,204 @@
+BorderPane {
+    -fx-background-color: #04090a;
+}
+
+FlowPane {
+    -fx-background-color: #04090a;
+}
+
+ScrollPane {
+    -fx-background-color: #04090a;
+    -fx-background: #04090a;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #131F23;
+    -fx-background-insets: 5, 5, 5;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:hover .thumb {
+    -fx-effect: dropshadow(gaussian, #131F23, 10, 0.7, 0.0, 0.0);
+}
+
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #131F23;
+    -fx-background-insets: 5, 5, 5;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: #04090a;
+}
+
+.scroll-bar > .increment-button > .increment-arrow,
+.scroll-bar > .decrement-button > .decrement-arrow {
+    -fx-background-color: #04090a;
+}
+
+#mainVBox {
+    -fx-background-color: #0b1416;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -fx-background-radius: 0 20 20 0;
+}
+
+#menuBorderBox {
+    -fx-background-color: #0b1416;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    -fx-background-radius: 0 20 20 0;
+}
+
+.Pane {
+    -fx-background: #04090a;
+    -fx-border-color: #82959B;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    /*-fx-effect: dropshadow(gaussian, #82959B, 5, 0, 0.0, 0.0);*/
+}
+
+.Pane:hover {
+    -fx-background-color: #131f23;
+}
+
+#welcomeLabel, #postLabel {
+    /*-fx-font-family: "Segoe UI Black";*/
+    -fx-font-family: "Roboto Bk";
+    -fx-font-size: 25;
+    -fx-text-fill: #f2f4f5;
+    -fx-stroke: #f2f4f5;
+}
+
+#trendingLabel, #myPostsLabel, #subsLabel, #nothingFoundMySub, #nothingFoundOtherSub, #subsLabelOther, #inSubLabel {
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 16;
+    -fx-text-fill: #f2f4f5;
+    -fx-stroke: #f2f4f5;
+}
+
+.PostTitle {
+    -fx-font-family: "Roboto Lt";
+    -fx-font-size: 20;
+    -fx-text-fill: #f2f4f5;
+    -fx-stroke: #f2f4f5;
+    -fx-padding: 15 15 5 15;
+}
+
+.PostText {
+    -fx-font-family: "Roboto Th";
+    -fx-font-size: 18;
+    -fx-text-fill: #f2f4f5;
+    -fx-stroke: #f2f4f5;
+    -fx-padding: 10 15 15 15;
+}
+
+.menuButton {
+    -fx-background-color: #0b1416;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-text-fill: #f2f4f5;
+    -fx-pref-height: 40;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-spacing: 50;
+}
+
+.menuButton:hover {
+    -fx-background-color: #131f23;
+}
+
+.menuButton:selected {
+    -fx-background-color: #33464c;
+}
+
+#logoutButton {
+    -fx-background-color: #0b1416;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-text-fill: #f2f4f5;
+    -fx-pref-height: 40;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 15;
+    -fx-font-weight: bold;
+    -fx-spacing: 50;
+}
+
+#logoutButton:hover {
+    -fx-background-color: #131f23;
+}
+
+#newPostButton, #newSubButton, #newComment {
+    -fx-background-color: #D93A00;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-text-fill: #f2f4f5;
+    -fx-pref-height: 16;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    /*-fx-spacing: 50;*/
+}
+
+#newPostButton, #newSubButton, #newComment:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #e23d00;
+}
+
+.DeleteButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #c62828;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color:  #c62828;
+}
+
+.DeleteButton:hover {
+    -fx-text-fill: #f2f4f5;
+    -fx-background-color: #c62828;
+}
+
+.toggleButtonNewPost {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-font-family: Roboto;
+}
+#nsfwToggle{
+    -fx-text-fill:  #dbaf00;
+}
+#voteToggle{
+    -fx-text-fill: #0e8a00;
+}
+#nsfwToggle:hover, #nsfwToggle:selected {
+    -fx-text-fill: #f2f4f5;
+    -fx-background-color: #dbaf00;
+}
+
+#voteToggle:hover, #voteToggle:selected {
+    -fx-text-fill: #f2f4f5;
+    -fx-background-color: #0e8a00;
+}
+#nsfwBtn{
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-background-color: #dbaf00;
+    -fx-text-fill: #f2f4f5;
+    -fx-font-family: Roboto;
+}
+.PostBy{
+    -fx-font-family: "Roboto Th";
+    -fx-font-size: 15;
+    -fx-text-fill: #f2f4f5;
+    -fx-stroke: #f2f4f5;
+    -fx-padding: 0 15 0 15;
+}
+.VoteToggle{
+    -fx-background-radius : 20;
+    -fx-background-color: transparent;
+}
+.VoteToggle:selected , .VoteToggle:hover{
+    -fx-background-color: #33464c;
+}

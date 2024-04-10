@@ -1,0 +1,15 @@
+TextField, TextArea {
+    -fx-background-color: #172429;
+    -fx-pref-height: 40;
+    -fx-font-family: "SF-Arabic";
+    -fx-font-size: 15;
+    -fx-text-fill: #f2f4f5;
+    -fx-start-margin: 100;
+    -fx-prompt-text-fill: #82959B;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 20, 20, 20, 20;
+    -fx-border-radius: 20, 20, 20, 20;
+}
+TextArea .content{
+    -fx-border-color:#172429;
+}

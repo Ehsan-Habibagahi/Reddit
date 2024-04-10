@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<BorderPane minHeight="100.0" minWidth="300.0" prefHeight="20" prefWidth="50" style="-fx-background-color: #0b1416;" styleClass="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
 
-</AnchorPane>
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <center>
+    <TextArea id="commentTextArea" promptText="Comment" style="-fx-font-family: Roboto; -fx-font-size: 15; -fx-control-inner-background: #82959B;                -fx-border-radius: 20; -fx-background-radius: 20; -fx-focus-color: transparent;" />
+    </center>
+    <bottom>
+        <Button id="commentButton" fx:id="newComment" layoutY="40" text="Comment" BorderPane.alignment="BOTTOM_RIGHT">
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin></Button>
+    </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</BorderPane>

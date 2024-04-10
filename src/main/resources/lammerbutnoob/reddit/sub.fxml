@@ -1,52 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.SubredditController">
-    <Label fx:id="postLabel" text="Posts" BorderPane.alignment="TOP_CENTER">
+<VBox prefHeight="552.0" prefWidth="958.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.SubredditController">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <Label fx:id="postLabel" text="Subreddits" BorderPane.alignment="TOP_CENTER">
         <padding>
             <Insets bottom="5" left="40" top="20" />
         </padding>
     </Label>
-    <HBox alignment="CENTER_LEFT">
+    <HBox alignment="CENTER_LEFT" style="-fx-border-color: transparent transparent #33464c transparent;">
         <padding>
             <Insets left="40" />
         </padding>
-        <Button fx:id="newSubButton" layoutY="40" text="New" />
-        <Label fx:id="mySubsLabel" text="My SubReddits" BorderPane.alignment="TOP_CENTER">
-            <padding>
-                <Insets bottom="5" left="10" top="15" />
-            </padding>
-            <graphic>
-                <ImageView>
-                    <image>
-                        <Image url="@Subreddit.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Label>
+        <Button fx:id="newSubButton" layoutY="40" onAction="#newSubButton" text="New">
+         <HBox.margin>
+            <Insets bottom="10.0" />
+         </HBox.margin></Button>
     </HBox>
     <ScrollPane fitToWidth="true">
-        <content>
-            <FlowPane fx:id="postFlowPane" hgap="5" vgap="5">
+        <VBox>
+            <padding>
+                <Insets bottom="5" left="19" right="18" top="5" />
+            </padding>
+            <Label fx:id="subsLabel" prefWidth="158.0" text="My SubReddits">
                 <padding>
-                    <Insets bottom="5" left="19" right="18" top="5" />
+                    <Insets left="10.0" />
                 </padding>
-                <Pane fx:id="postPane" prefHeight="250" prefWidth="350" styleClass="Pane">
-                    <children>
-                        <VBox alignment="TOP_LEFT" fillWidth="true">
-                            <Label prefWidth="350" styleClass="PostTitle" text="Title1" wrapText="true" />
-                            <Line endX="60" startX="0" stroke="#f2f4f5" translateX="15" />
-                            <Label prefHeight="200" prefWidth="350" styleClass="PostText" text="There are some text here balabla dsfbhjk" wrapText="true" />
-                        </VBox>
-                    </children>
-                </Pane>
-                <Pane prefHeight="250" prefWidth="350" styleClass="Pane" />
+                <graphic>
+                    <ImageView>
+                        <image>
+                            <Image url="@Subreddit.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Label>
+            <HBox alignment="CENTER">
+                <Label fx:id="nothingFoundMySub" text="Nothing found!" />
+            </HBox>
+            <FlowPane fx:id="postFlowPane" hgap="5" vgap="5">
+
+
+                <!--                Here the panes will be added-->
+                <!--                <Pane fx:id="postPane" prefHeight="250" prefWidth="350" styleClass="Pane">-->
+                <!--                    <children>-->
+                <!--                        <VBox alignment="TOP_LEFT" fillWidth="true">-->
+                <!--                            <Label prefWidth="350" styleClass="PostTitle" text="Title1" wrapText="true" />-->
+                <!--                            <Line endX="60" startX="0" stroke="#f2f4f5" translateX="15" />-->
+                <!--                            <Label prefHeight="200" prefWidth="350" styleClass="PostText" text="There are some text here balabla dsfbhjk" wrapText="true" />-->
+                <!--                        </VBox>-->
+                <!--                    </children>-->
+                <!--                </Pane>-->
+                <!--                <Pane prefHeight="250" prefWidth="350" styleClass="Pane"/>-->
             </FlowPane>
-        </content>
+            <Label fx:id="subsLabelOther" prefHeight="41.0" prefWidth="203.0" text="Other's SubReddits">
+                <padding>
+                    <Insets left="10.0" />
+                </padding>
+                <graphic>
+                    <ImageView>
+                        <image>
+                            <Image url="@Subreddit.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Label>
+            <FlowPane fx:id="otherPostFlowPane" hgap="5" vgap="5">
+<!--                Here the other's pane will be added-->
+            </FlowPane>
+            <HBox alignment="CENTER">
+                <Label fx:id="nothingFoundOtherSub" text="Nothing found!">
+               <padding>
+                  <Insets bottom="2.0" />
+               </padding>
+                </Label>
+            </HBox>
+        </VBox>
     </ScrollPane>
 </VBox>

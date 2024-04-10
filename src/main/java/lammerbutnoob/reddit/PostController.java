@@ -1,2 +1,5 @@
-package lammerbutnoob.reddit;public class PostController {
+package lammerbutnoob.reddit;
+
+public class PostController {
+
 }

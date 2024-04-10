@@ -1,6 +1,9 @@
 #signUpLabel:hover{
     -fx-cursor: hand;
 }
+#signUpLabel:focused{
+    -fx-opacity: 0.5;
+}
 VBox {
     -fx-background-color: #0F1A1C;
 }
