@@ -49,9 +49,8 @@ public class SubredditController {
             }));
             Button deleteButton = (Button) postPane.lookup("#deleteButton");
             deleteButton.setOnAction(event -> {
-                deleteButton(id);
+                SubredditController.deleteButton(id);
             });
-            postPane.setId("my_sub_" + i);
             postFlowPane.getChildren().add(postPane);
         }
         if (i != 0)
@@ -69,7 +68,11 @@ public class SubredditController {
             panePostTitle.setText("r/" + rs.getString("title"));
             Label panePostText = (Label) postPane.lookup("#panePostText");
             panePostText.setText(rs.getString("description"));
-            postPane.setId("others_sub_" + String.valueOf(i));
+            int id = rs.getInt("id");
+            postPane.setId(String.valueOf(id));
+            postPane.setOnMouseClicked((event -> {
+                subView(id);
+            }));
             otherPostFlowPane.getChildren().add(postPane);
         }
         if (i != 0)
@@ -92,7 +95,7 @@ public class SubredditController {
     }
 
 
-    public void deleteButton(int id) {
+    public  static void deleteButton(int id) {
         try {
             Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
             //Prepared statement

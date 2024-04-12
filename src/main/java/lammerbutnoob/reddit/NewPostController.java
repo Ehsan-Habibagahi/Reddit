@@ -22,7 +22,7 @@ public class NewPostController {
     @FXML
     Label inSubLabel;
     public void initialize() throws SQLException{
-//        inSubLabel.setText("will be posted in r/"+SubView.getTitle());
+        inSubLabel.setText("will be posted in r/"+SubView.getTitle());
     }
     public void textChange(KeyEvent keyEvent) {
         //Set listener for text fields

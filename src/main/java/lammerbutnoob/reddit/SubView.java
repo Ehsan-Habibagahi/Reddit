@@ -1,6 +1,7 @@
 package lammerbutnoob.reddit;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.skin.LabeledSkinBase;
@@ -40,8 +41,27 @@ public class SubView {
         return result;
     }
 
-    public static void comment(int id, String text) {
-        System.out.println("id: " + id + " text: " + text);
+    public static void comment(String text, int postId) {
+        if (!text.isEmpty()) {
+            try {
+                Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+                PreparedStatement preparedStatement = con.prepareStatement("INSERT into comments(text,author,post) values (?,?,?)");
+                preparedStatement.setString(1, text);
+                preparedStatement.setInt(2, Account.currentUserID);
+                preparedStatement.setInt(3, postId);
+                preparedStatement.executeUpdate();
+                preparedStatement.close();
+                con.close();
+                Alert commentAlert = new Alert(Alert.AlertType.INFORMATION);
+                commentAlert.initOwner(Reddit.primaryStage);
+                commentAlert.setHeaderText("Done!");
+                commentAlert.setContentText("Commit Submitted");
+                commentAlert.show();
+                show(id);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     //Return 1 for up voted -1, for down voted and 0 for none
@@ -65,5 +85,26 @@ public class SubView {
             throw new RuntimeException(e);
         }
         return 0;
+    }
+
+    public static void deletePost(int id) {
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("delete from posts where id = "+ id);
+            int count = stmt.executeUpdate("delete from comments where post = "+id);
+            stmt.close();
+            con.close();
+            Alert deletePostAlert = new Alert(Alert.AlertType.INFORMATION);
+            deletePostAlert.initOwner(Reddit.primaryStage);
+            deletePostAlert.setHeaderText("Done!");
+            deletePostAlert.setContentText("Post with "+count +" comments deleted!");
+            deletePostAlert.show();
+            show(SubView.id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

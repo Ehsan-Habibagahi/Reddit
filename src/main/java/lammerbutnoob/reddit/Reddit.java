@@ -13,18 +13,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
-
-// <dependency>
-//            <groupId>org.xerial</groupId>
-//            <artifactId>sqlite-jdbc</artifactId>
-//            <version>3.44.1.0</version>
-//        </dependency>
 public class Reddit extends Application {
     public static Stage primaryStage;
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(Reddit.class.getResource("main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Reddit.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 960, 540);
         stage.setTitle("Reddit");
         stage.getIcons().add(new Image("reddit-logo-round.png"));

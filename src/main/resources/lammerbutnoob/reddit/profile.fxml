@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.PostController">
-    <Label fx:id="postLabel" text="Posts" BorderPane.alignment="TOP_CENTER">
-        <padding>
-            <Insets bottom="5" left="40" top="20" />
-        </padding>
-    </Label>
-    <HBox alignment="CENTER_LEFT">
-        <padding>
-            <Insets left="40" />
-        </padding>
-        <Button fx:id="newPostButton" layoutY="40" text="New" />
-        <Label fx:id="myPostsLabel" text="My Posts" BorderPane.alignment="TOP_CENTER">
-            <padding>
-                <Insets bottom="5" left="10" top="15" />
-            </padding>
-            <graphic>
-                <ImageView>
-                    <image>
-                        <Image url="@Post.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Label>
-    </HBox>
-    <ScrollPane fitToWidth="true">
-        <content>
-            <FlowPane fx:id="postFlowPane" hgap="5" vgap="5">
-                <padding>
-                    <Insets bottom="5" left="19" right="18" top="5" />
-                </padding>
-                <Pane fx:id="postPane" prefHeight="250" prefWidth="350" styleClass="Pane">
-                    <children>
-                        <VBox alignment="TOP_LEFT" fillWidth="true">
-                            <Label prefWidth="350" styleClass="PostTitle" text="Title1" wrapText="true" />
-                            <Line endX="60" startX="0" stroke="#f2f4f5" translateX="15" />
-                            <Label prefHeight="200" prefWidth="350" styleClass="PostText" text="There are some text here balabla dsfbhjk" wrapText="true" />
-                        </VBox>
-                    </children>
-                </Pane>
-                <Pane prefHeight="250" prefWidth="350" styleClass="Pane" />
-            </FlowPane>
-        </content>
-    </ScrollPane>
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.ProfController">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+   <HBox alignment="CENTER" spacing="20.0">
+      <children>
+          <TextField fx:id="username" maxHeight="40.0" minHeight="40.0" prefHeight="50.0"
+                     prefWidth="400.0" promptText="Username" styleClass="StyledTextBox"
+                     onKeyReleased="#checkUsernameValidation">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin>
+         </TextField>
+         <Button fx:id="updateUsername" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updateUsername" disable="true" />
+      </children>
+      <padding>
+         <Insets bottom="20.0" top="20.0" />
+      </padding>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </HBox>
+   <HBox alignment="CENTER" spacing="20.0">
+      <children>
+          <TextField fx:id="email" maxHeight="40.0" minHeight="40.0" prefHeight="50.0" prefWidth="400.0" promptText="Email" styleClass="StyledTextBox" onKeyReleased="#checkEmailValidation"/>
+         <Button fx:id="updateEmail" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updateEmail" disable="true"/>
+      </children>
+      <padding>
+         <Insets bottom="20.0" />
+      </padding>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </HBox>
+   <HBox alignment="CENTER" spacing="20.0">
+      <children>
+          <PasswordField fx:id="password" maxHeight="40.0" minHeight="40.0" prefHeight="50.0" prefWidth="400.0" promptText="Password" styleClass="StyledTextBox" onKeyReleased="#checkPassValidation"/>
+         <Button fx:id="updatePassword" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updatePassword" disable="true"/>
+      </children>
+      <padding>
+         <Insets bottom="20.0" />
+      </padding>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </HBox>
 </VBox>

@@ -5,7 +5,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<?import javafx.scene.shape.Line?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="lammerbutnoob.reddit.MainController"
@@ -32,19 +31,19 @@
                             </ImageView>
                         </graphic>
                     </ToggleButton>
-                    <ToggleButton styleClass="menuButton" text="Post" prefWidth="190" toggleGroup="$menuToggleGroup"
-                                  onAction="#togglePost">
-                        <graphic>
-                            <ImageView>
-                                <Image url="@Post.png"/>
-                            </ImageView>
-                        </graphic>
-                    </ToggleButton>
                     <ToggleButton styleClass="menuButton" text="Subreddit" prefWidth="190"
                                   toggleGroup="$menuToggleGroup" onAction="#toggleSub">
                         <graphic>
                             <ImageView>
                                 <Image url="@Subreddit.png"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                    <ToggleButton styleClass="menuButton" text="Profile" prefWidth="190" toggleGroup="$menuToggleGroup"
+                                  onAction="#toggleProf">
+                        <graphic>
+                            <ImageView>
+                                <Image url="@Post.png"/>
                             </ImageView>
                         </graphic>
                     </ToggleButton>
@@ -67,52 +66,6 @@
         </BorderPane>
     </left>
     <center>
-        <VBox>
-            <Label fx:id="welcomeLabel" text="Welcome" BorderPane.alignment="TOP_CENTER">
-                <padding>
-                    <Insets top="20" left="40" bottom="5"/>
-                </padding>
-                <graphic>
-                    <ImageView>
-                        <image>
-                            <Image url="@Welcome-ui.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Label>
-            <Label fx:id="trendingLabel" text="Trending" BorderPane.alignment="TOP_CENTER">
-                <padding>
-                    <Insets left="40" bottom="5" top="15"/>
-                </padding>
-                <graphic>
-                    <ImageView>
-                        <image>
-                            <Image url="@Trending.png"/>
-                        </image>
-                    </ImageView>
-                </graphic>
-            </Label>
-
-            <ScrollPane fitToWidth="true">
-                <content>
-                    <FlowPane fx:id="postFlowPane" hgap="5" vgap="5">
-                        <padding>
-                            <Insets bottom="5" left="19" right="18" top="5"/>
-                        </padding>
-                        <Pane fx:id="postPane" styleClass="Pane" prefWidth="350" prefHeight="250">
-                            <children>
-                                <VBox alignment="TOP_LEFT" fillWidth="true">
-                                    <Label prefWidth="350" styleClass="PostTitle" text="Title1" wrapText="true"/>
-                                    <Line startX="0" endX="90" translateX="15" stroke="#f2f4f5" strokeWidth="0.5"/>
-                                    <Label prefWidth="350" prefHeight="200" styleClass="PostText" wrapText="true"
-                                           text="There are some text here balabla dsfbhjk"/>
-                                </VBox>
-                            </children>
-                        </Pane>
-                        <Pane styleClass="Pane" prefWidth="350" prefHeight="250"/>
-                    </FlowPane>
-                </content>
-            </ScrollPane>
-        </VBox>
+<!--        Menu inject here -->
     </center>
 </BorderPane>

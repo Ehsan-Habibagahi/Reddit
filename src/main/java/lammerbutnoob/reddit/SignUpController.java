@@ -132,11 +132,6 @@ public class SignUpController {
                                 System.out.println("Error in scene change");
                                 throw new RuntimeException(e);
                             }
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setContentText("Welcome");
-                            alert.setHeaderText("Valid!");
-                            alert.initOwner(Reddit.primaryStage);
-                            alert.show();
                         }
                     });
                 } else if (result == -1) { //Invalid password

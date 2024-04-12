@@ -1,6 +1,7 @@
 package lammerbutnoob.reddit;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 
@@ -116,7 +117,14 @@ public class Account {
         con.close();
         return name;
     }
-
+    public static String getEmail() throws SQLException {
+        Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT email from users where id =" + currentUserID);
+        String name = rs.getString("email");
+        con.close();
+        return name;
+    }
     public static String getName(int id) throws SQLException {
         Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
         Statement stmt = con.createStatement();
@@ -125,6 +133,64 @@ public class Account {
         con.close();
         return name;
     }
+    public static void updateEmail(String email) {
+        try {
+            Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+            PreparedStatement statement = con.prepareStatement("UPDATE users set email = ? where id = ? ");
+            statement.setString(1,email);
+            statement.setInt(2,Account.currentUserID);
+            statement.executeUpdate();
+            Alert emailUpdateAlert = new Alert(Alert.AlertType.INFORMATION);
+            emailUpdateAlert.initOwner(Reddit.primaryStage);
+            emailUpdateAlert.setHeaderText("Updated!");
+            emailUpdateAlert.setContentText("Email updated!");
+            emailUpdateAlert.show();
+            statement.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public static void updateUsername(String username) {
+        try {
+            Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+            PreparedStatement statement = con.prepareStatement("UPDATE users set username = ? where id = ? ");
+            statement.setString(1,username);
+            statement.setInt(2,Account.currentUserID);
+            statement.executeUpdate();
+            Alert usernameUpdateAlert = new Alert(Alert.AlertType.INFORMATION);
+            usernameUpdateAlert.initOwner(Reddit.primaryStage);
+            usernameUpdateAlert.setHeaderText("Updated!");
+            usernameUpdateAlert.setContentText("Username updated!");
+            usernameUpdateAlert.show();
+            statement.close();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void updatePassword(String password) {
+        try {
+            password = Arrays.toString(Account.hashPassword(password));
+            Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+            PreparedStatement statement = con.prepareStatement("UPDATE users set password = ? where id = ? ");
+            statement.setString(1,password);
+            statement.setInt(2,Account.currentUserID);
+            statement.executeUpdate();
+            Alert passwordUpdateAlert = new Alert(Alert.AlertType.INFORMATION);
+            passwordUpdateAlert.initOwner(Reddit.primaryStage);
+            passwordUpdateAlert.setHeaderText("Updated!");
+            passwordUpdateAlert.setContentText("Password updated!");
+            passwordUpdateAlert.show();
+            statement.close();
+            con.close();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

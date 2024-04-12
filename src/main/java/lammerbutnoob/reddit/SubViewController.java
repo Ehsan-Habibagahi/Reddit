@@ -43,21 +43,25 @@ public class SubViewController {
         int i = 0;
         while (rs.next()) {
             ++i;
+            int id = rs.getInt("id");
             //Add post
             HBox headbox = new HBox();
             Label postTitle = new Label();
             postTitle.setText(rs.getString("title"));
-            postTitle.getStyleClass().add("PostTitle");
+            postTitle.getStyleClass().add("PostTitleSubView");
             headbox.getChildren().add(postTitle);
+            //Delete Button
             Button deletebtn = new Button();
             deletebtn.getStyleClass().add("DeleteButton");
             deletebtn.setText("Delete");
-            if (rs.getInt("author") == Account.currentUserID)
+            deletebtn.setOnAction(event -> {
+                SubView.deletePost(id);
+            });
+            if (rs.getInt("author") == Account.currentUserID || SubView.id == Account.currentUserID)
                 headbox.getChildren().add(deletebtn);
             Button nsfwBtn = new Button();
             nsfwBtn.setText("NSFW");
             nsfwBtn.setId("nsfwBtn");
-
             headbox.setSpacing(5);
             headbox.setAlignment(Pos.CENTER_LEFT);
             subVBox.getChildren().add(headbox);
@@ -68,7 +72,7 @@ public class SubViewController {
             subVBox.getChildren().add(createdBy);
             Label postText = new Label();
             postText.setText(rs.getString("description"));
-            postText.getStyleClass().add("PostText");
+            postText.getStyleClass().add("PostTextSubView");
             subVBox.getChildren().add(postText);
             if (rs.getInt("isNSFW") == 1) {
                 headbox.getChildren().add(nsfwBtn);
@@ -79,13 +83,32 @@ public class SubViewController {
                 });
             }
             //Add comment
-            int id = rs.getInt("id");
+            Statement commentStmt = con.createStatement();
+            ResultSet commentRs = commentStmt.executeQuery("SELECT * from comments where post = " + rs.getInt("id") + " order by id desc");
+            while (commentRs.next()) {
+                HBox commentHbox = new HBox();
+                Label commentAuthor = new Label();
+                Label commentTxt = new Label();
+                commentHbox.setStyle("-fx-border-color: #f2f4f5; -fx-border-width: 0.1 0 0 0;");
+                commentAuthor.setText("u/" + Account.getName(commentRs.getInt("author")) + ": ");
+                commentTxt.setText(commentRs.getString("text"));
+                commentAuthor.getStyleClass().add("PostBy");
+                commentTxt.getStyleClass().add("PostCommentSubView");
+                commentHbox.getChildren().add(commentAuthor);
+                commentHbox.getChildren().add(commentTxt);
+                commentHbox.setAlignment(Pos.CENTER);
+                commentHbox.setSpacing(0);
+                subVBox.getChildren().add(commentHbox);
+            }
+            commentStmt.close();
+            commentRs.close();
+            //Add comment Box
             FXMLLoader fxmlLoader = new FXMLLoader(MainController.class.getResource("commentpane.fxml"));
             Parent comment = fxmlLoader.load();
             Button commentBtn = ((Button) comment.lookup("#commentButton"));
             commentBtn.setOnAction(event -> {
                 TextArea txtarea = (TextArea) commentBtn.getParent().lookup("#commentTextArea");
-                System.out.println(txtarea.getText());
+                SubView.comment(txtarea.getText(), id);
             });
             subVBox.getChildren().add(comment);
             //Add vote
@@ -172,18 +195,20 @@ public class SubViewController {
         ResultSet rs = stmt.executeQuery("SELECT * from posts where id = " + postId);
         String upVote = rs.getString("upVote");
         String downVote = rs.getString("downVote");
+        stmt.close();
+        Statement statement = con.createStatement();
         if (upVote == null || !upVote.startsWith("["))
             upVote = "[]";
         JSONArray ja = new JSONArray(upVote);
         JSONArray ja2 = new JSONArray(downVote);
         ja.put(Account.currentUserID);
-        ja2.remove(ja2.toList().indexOf(Account.currentUserID));
-        System.out.println(ja.toString());
-        stmt.close();
-        Statement statement = con.createStatement();
+        if (ja2.toList().contains(Account.currentUserID)) {
+            ja2.remove(ja2.toList().indexOf(Account.currentUserID));
+            statement.executeUpdate("update posts set votes = votes+1 where id = " + postId);
+        }
+        statement.executeUpdate("update posts set votes = votes+1 where id = " + postId);
         statement.executeUpdate("update posts set upVote = '" + ja.toString() + "'where id = " + postId);
         statement.executeUpdate("update posts set downVote = '" + ja2.toString() + "'where id = " + postId);
-        statement.executeUpdate("update posts set votes = votes+1 where id = " + postId);
         statement.close();
         con.close();
     }
@@ -217,10 +242,12 @@ public class SubViewController {
         JSONArray ja = new JSONArray(downVote);
         JSONArray ja2 = new JSONArray(upVote);
         ja.put(Account.currentUserID);
-        ja2.remove(ja2.toList().indexOf(Account.currentUserID));
-        System.out.println(ja.toString());
         stmt.close();
         Statement statement = con.createStatement();
+        if (ja2.toList().contains(Account.currentUserID)) {
+            ja2.remove(ja2.toList().indexOf(Account.currentUserID));
+            statement.executeUpdate("update posts set votes = votes-1 where id = " + postId);
+        }
         statement.executeUpdate("update posts set downVote = '" + ja.toString() + "'where id = " + postId);
         statement.executeUpdate("update posts set upVote = '" + ja2.toString() + "'where id = " + postId);
         statement.executeUpdate("update posts set votes = votes-1 where id = " + postId);
@@ -237,7 +264,6 @@ public class SubViewController {
             downVote = "[]";
         JSONArray ja = new JSONArray(downVote);
         ja.remove(ja.toList().indexOf(Account.currentUserID));
-        System.out.println(ja.toString());
         stmt.close();
         Statement statement = con.createStatement();
         statement.executeUpdate("update posts set downVote = '" + ja.toString() + "'where id = " + postId);

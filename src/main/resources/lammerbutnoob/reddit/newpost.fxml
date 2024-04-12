@@ -29,7 +29,7 @@
    <HBox spacing="10.0">
       <children>
          <ToggleButton fx:id="nsfwToggle" mnemonicParsing="false" style="-fx-border-color: #dbaf00;" styleClass="toggleButtonNewPost" text="NSFW" />
-         <ToggleButton fx:id="voteToggle" mnemonicParsing="false" selected="true" style="-fx-border-color: #0e8a00;" styleClass="toggleButtonNewPost" text="Can put vote on" />
+         <ToggleButton fx:id="voteToggle" mnemonicParsing="false" selected="true" style="-fx-border-color: #0e8a00;" styleClass="toggleButtonNewPost" text="Can put votes on" />
       </children>
    </HBox>
     <HBox alignment="CENTER">
