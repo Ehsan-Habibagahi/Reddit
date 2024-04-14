@@ -5,9 +5,9 @@ Label {
 
 .textbox {
     -fx-background-color: #172429;
-    -fx-pref-height: 55;
+    -fx-pref-height: 40;
     -fx-font-family: "SF-Arabic";
-    -fx-font-size: 17;
+    -fx-font-size: 15;
     -fx-text-fill: #f2f4f5;
     -fx-start-margin: 100;
     -fx-prompt-text-fill: #82959B;

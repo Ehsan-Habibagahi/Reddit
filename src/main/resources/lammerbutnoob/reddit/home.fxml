@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.HomeController">
+    <Label fx:id="welcomeLabel" text="Welcome" BorderPane.alignment="TOP_CENTER">
+        <stylesheets>
+            <URL value="@main.css" />
+        </stylesheets>
+        <padding>
+            <Insets bottom="5" left="40" top="20" />
+        </padding>
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@Welcome-ui.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Label>
+    <VBox maxWidth="800.0">
+        <children>
+            <TextField fx:id="searchBar" styleClass="StyledTextBox" maxHeight="40.0" minHeight="40.0" onAction="#search" prefHeight="30.0" promptText="Search for anything..." />
+        </children>
+        <padding>
+            <Insets left="80.0" right="80.0" />
+        </padding>
+    </VBox>
+    <HBox prefHeight="16.0" prefWidth="600.0">
+        <children>
+            <ChoiceBox fx:id="filterChoiceBox" minWidth="20.0" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #172429; -fx-border-radius: 5; -fx-background-radius: 5; -fx-mark-color: #33464c;" value="Trending" />
+        </children>
+        <padding>
+            <Insets bottom="5.0" left="40.0" top="30.0" />
+        </padding>
+    </HBox>
+    <ScrollPane fx:id="homeScrollPane" fitToWidth="true">
+        <content>
+            <FlowPane fx:id="postFlowPane" alignment="CENTER" hgap="5" vgap="5">
+                <padding>
+                    <Insets left="19" bottom="5" right="18" top="5" />
+                </padding>
+<!--                search of subs injects here-->
+                <HBox fx:id="nothingFoundPost" alignment="CENTER">
+                    <Label  style="-fx-font-size: 15; -fx-text-fill: #f2f4f5;" text="Nothing found!">
+                        <effect>
+                            <Blend />
+                        </effect>
+                    </Label>
+                </HBox>
+
+                <VBox fx:id="postVBox" alignment="CENTER_LEFT">
+
+                    <!--                Here the posts will be added!-->
+                </VBox>
+            </FlowPane>
+        </content>
+    </ScrollPane>
+
+</VBox>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane prefHeight="250" prefWidth="350" styleClass="Pane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <children>
+        <VBox alignment="TOP_LEFT" fillWidth="true">
+            <HBox alignment="CENTER_LEFT">
+                <children>
+                    <Label fx:id="panePostTitle" alignment="CENTER_LEFT" maxHeight="200" prefWidth="270" styleClass="PostTitle" text="Title1" wrapText="true" />
+                    <Button fx:id="deleteButton" alignment="CENTER" mnemonicParsing="false" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-font-family: 'Roboto'; -fx-border-color: #c62828;" styleClass="DeleteButton" text="Delete" visible="false" />
+                </children>
+            </HBox>
+            <Line endX="90" startX="0" stroke="#f2f4f5" strokeWidth="0.5" translateX="15" />
+            <Label fx:id="panePostText" maxHeight="100" prefWidth="350" styleClass="PostText" text="There are some text here balabla dsfbhjk shdfbha klsafsdafnksdnfjnjsfdknsfkjn" wrapText="true" />
+        </VBox>
+    </children>
+</Pane>

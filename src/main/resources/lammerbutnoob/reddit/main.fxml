@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+            fx:controller="lammerbutnoob.reddit.MainController"
+            prefHeight="400.0" prefWidth="600.0" fx:id="mainBorderBox">
+    <stylesheets>
+        <URL value="@main.css"/>
+    </stylesheets>
+    <left>
+        <BorderPane fx:id="menuBorderBox">
+            <top>
+                <VBox alignment="TOP_CENTER" spacing="20" fx:id="mainVBox" prefWidth="200"
+                      style="-fx-padding: 20 0 0 0">
+                        <ImageView fitWidth="60" fitHeight="60">
+                            <Image url="reddit-logo-round.png"/>
+                        </ImageView>
+                    <fx:define>
+                        <ToggleGroup fx:id="menuToggleGroup"/>
+                    </fx:define>
+                    <ToggleButton styleClass="menuButton" text="Home" prefWidth="190" toggleGroup="$menuToggleGroup"
+                                  selected="true" onAction="#toggleHome">
+                        <graphic>
+                            <ImageView>
+                                <Image url="@Home.png"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                    <ToggleButton styleClass="menuButton" text="Subreddit" prefWidth="190"
+                                  toggleGroup="$menuToggleGroup" onAction="#toggleSub">
+                        <graphic>
+                            <ImageView>
+                                <Image url="@Subreddit.png"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                    <ToggleButton styleClass="menuButton" text="Profile" prefWidth="190" toggleGroup="$menuToggleGroup"
+                                  onAction="#toggleProf">
+                        <graphic>
+                            <ImageView>
+                                <Image url="@Post.png"/>
+                            </ImageView>
+                        </graphic>
+                    </ToggleButton>
+                </VBox>
+            </top>
+            <bottom>
+                <Button prefWidth="190" fx:id="logoutButton" BorderPane.alignment="CENTER"
+                        contentDisplay="GRAPHIC_ONLY" onAction="#logOutButton">
+                    <BorderPane.margin>
+                        <Insets bottom="25"/>
+                    </BorderPane.margin>
+                    <graphic>
+                        <ImageView>
+                            <Image url="@Logout.png"/>
+                        </ImageView>
+                    </graphic>
 
-</AnchorPane>
+                </Button>
+            </bottom>
+        </BorderPane>
+    </left>
+    <center>
+<!--        Menu inject here -->
+    </center>
+</BorderPane>

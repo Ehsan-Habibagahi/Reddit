@@ -10,6 +10,9 @@ module lammerbutnoob.reddit {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
+    requires sqlite.jdbc;
+    requires org.json;
 
     opens lammerbutnoob.reddit to javafx.fxml;
     exports lammerbutnoob.reddit;

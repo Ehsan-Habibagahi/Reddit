@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="42.0" maxWidth="77.0" prefHeight="60.0" prefWidth="110.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="voteLabel" alignment="CENTER" layoutX="18.0" layoutY="-9.0" prefHeight="66.0" prefWidth="39.0" style="-fx-text-fill: #f2f4f5; -fx-font-family: Roboto; -fx-font-size: 20;" text="0" textAlignment="CENTER" />
+      <ToggleButton fx:id="downVote" contentDisplay="GRAPHIC_ONLY" layoutX="-1.0" layoutY="1.0" maxHeight="40.0" maxWidth="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="32.0" styleClass="VoteToggle" textAlignment="CENTER" toggleGroup="$voteToggleGroup">
+         <toggleGroup>
+            <ToggleGroup fx:id="voteToggleGroup" />
+         </toggleGroup>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Downvote.png" />
+               </image>
+            </ImageView>
+         </graphic></ToggleButton>
+      <ToggleButton fx:id="upVote" contentDisplay="GRAPHIC_ONLY" layoutX="45.0" maxHeight="40.0" maxWidth="10.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="32.0" styleClass="VoteToggle" textAlignment="CENTER" toggleGroup="$voteToggleGroup">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Upvote.png" />
+               </image>
+            </ImageView>
+         </graphic></ToggleButton>
+   </children>
+</Pane>

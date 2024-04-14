@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="602.0" prefWidth="775.0" spacing="20.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.NewPostController">
+    <stylesheets>
+        <URL value="@main.css" />
+        <URL value="@newSub.css" />
+    </stylesheets>
+    <Label fx:id="postLabel" prefHeight="61.0" prefWidth="210.0" text="New Post">
+        <opaqueInsets>
+            <Insets />
+        </opaqueInsets>
+    </Label>
+   <Label fx:id="inSubLabel" style="-fx-font-family: 'Roboto Light'; -fx-font-size: 16; -fx-text-fill: #f2f4f5;" text="will be posted in r/" />
+    <TextField fx:id="titleNewPost" onKeyReleased="#textChange" prefHeight="25.0" prefWidth="587.0" promptText="Title">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
+        </padding>
+    </TextField>
+    <TextArea fx:id="descriptionNewPost" minHeight="128.0" onKeyReleased="#textChange" prefHeight="128.0" prefWidth="690.0" promptText="Description" style="-fx-control-inner-background: #172429; -fx-border-width: 0; -fx-border-color: #172429; -fx-text-box-border: #172429; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;" wrapText="true">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="15.0" />
+        </padding>
+    </TextArea>
+   <HBox spacing="10.0">
+      <children>
+         <ToggleButton fx:id="nsfwToggle" mnemonicParsing="false" style="-fx-border-color: #dbaf00;" styleClass="toggleButtonNewPost" text="NSFW" />
+         <ToggleButton fx:id="voteToggle" mnemonicParsing="false" selected="true" style="-fx-border-color: #0e8a00;" styleClass="toggleButtonNewPost" text="Can put votes on" />
+      </children>
+   </HBox>
+    <HBox alignment="CENTER">
+        <Label style="-fx-font-family: 'Roboto';-fx-font-size: 12; -fx-text-fill: #f2f4f5;" text="Please be mindful of reddit's content policy and practice good &#10;reddiquette.You'll be set as the admin of this subreddit!" textAlignment="CENTER" />
+    </HBox>
+    <HBox alignment="BOTTOM_RIGHT">
+        <Button fx:id="newPostButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" disable="true" onAction="#createPostButton" prefHeight="39.0" prefWidth="67.0" style="-fx-pref-height: 30;" text="Create" />
+    </HBox>
+    <padding>
+        <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
+    </padding>
+</VBox>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="552.0" prefWidth="958.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lammerbutnoob.reddit.SubViewController">
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+    <Label fx:id="postLabel" text="Subtitle" BorderPane.alignment="TOP_CENTER">
+        <padding>
+            <Insets bottom="5" left="40" top="20" />
+        </padding>
+    </Label>
+    <Label fx:id="postDes" styleClass="PostText" text="Sub description" BorderPane.alignment="TOP_CENTER">
+        <padding>
+            <Insets bottom="5.0" left="40.0" top="20.0" />
+        </padding>
+    </Label>
+    <HBox alignment="CENTER_LEFT" style="-fx-border-color: transparent transparent #33464c transparent;">
+        <padding>
+            <Insets left="40" />
+        </padding>
+        <Button fx:id="newPostButton" layoutY="40" onAction="#newPost" text="New Post">
+            <HBox.margin>
+                <Insets bottom="10.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
+    <ScrollPane fx:id="subScrollPane" fitToWidth="true">
+        <VBox>
+            <padding>
+                <Insets bottom="20" left="19" right="18" top="5" />
+            </padding>
+            <HBox alignment="CENTER">
+                <Label fx:id="nothingFoundPost" text="Nothing found!">
+               <effect>
+                  <Blend />
+               </effect></Label>
+            </HBox>
+            <FlowPane fx:id="subFlowPane" hgap="5" vgap="5">
+                <VBox fx:id="subVBox" alignment="CENTER_LEFT">
+                    <!--                Here the posts and comments will be added!-->
+                </VBox>
+            </FlowPane>
+            <HBox alignment="CENTER" />
+        </VBox>
+    </ScrollPane>
+
+</VBox>
