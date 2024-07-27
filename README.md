@@ -1,5 +1,5 @@
 ![License](https://img.shields.io/badge/License-MIT-ff4500)
-![Stars](https://img.shields.io/github/stars/ehsan-habib-3h/Reddit)
+![Stars](https://img.shields.io/github/stars/ehsan-habibagahi/Reddit)
 <p align = "center">
   <img src = "./src/main/resources/lammerbutnoob/reddit/reddit-logo-small.png"/>
 </p>
