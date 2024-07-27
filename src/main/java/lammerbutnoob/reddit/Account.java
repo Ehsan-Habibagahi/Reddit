@@ -1,10 +1,5 @@
 package lammerbutnoob.reddit;
-
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.RadioButton;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -182,13 +177,39 @@ public class Account {
             Alert passwordUpdateAlert = new Alert(Alert.AlertType.INFORMATION);
             passwordUpdateAlert.initOwner(Reddit.primaryStage);
             passwordUpdateAlert.setHeaderText("Updated!");
-            passwordUpdateAlert.setContentText("Password updated!");
+            passwordUpdateAlert.setContentText("Passwordw updated!");
             passwordUpdateAlert.show();
             statement.close();
             con.close();
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void deleteAccount() {
+        try {
+            Connection con = DriverManager.getConnection("jdbc:sqlite:src/main/resources/database.db");
+            PreparedStatement statement = con.prepareStatement("DELETE from users where id = ?");
+            statement.setInt(1,currentUserID);
+            statement.executeUpdate();
+            statement.close();
+            Statement statement1 = con.createStatement();
+            int count_of_subs = statement1.executeUpdate("DELETE from subreddits where admin = "+currentUserID);
+            int count_of_posts = statement1.executeUpdate("DELETE from posts where author = "+currentUserID);
+            int count_of_comments = statement1.executeUpdate("DELETE from comments where author = "+currentUserID);
+            Alert passwordUpdateAlert = new Alert(Alert.AlertType.INFORMATION);
+            passwordUpdateAlert.initOwner(Reddit.primaryStage);
+            passwordUpdateAlert.setHeaderText(String.format("Account Deleted with %d subs, %d posts and %d comments deleted!",
+                    count_of_subs,count_of_posts,count_of_comments));
+            passwordUpdateAlert.setContentText("Bye Bye");
+            passwordUpdateAlert.show();
+            statement.close();
+            con.close();
+            Reddit.setScene("login.fxml");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -11,14 +11,12 @@
     </stylesheets>
    <HBox alignment="CENTER" spacing="20.0">
       <children>
-          <TextField fx:id="username" maxHeight="40.0" minHeight="40.0" prefHeight="50.0"
-                     prefWidth="400.0" promptText="Username" styleClass="StyledTextBox"
-                     onKeyReleased="#checkUsernameValidation">
+          <TextField fx:id="username" maxHeight="40.0" minHeight="40.0" onKeyReleased="#checkUsernameValidation" prefHeight="50.0" prefWidth="400.0" promptText="Username" styleClass="StyledTextBox">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </TextField>
-         <Button fx:id="updateUsername" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updateUsername" disable="true" />
+         <Button fx:id="updateUsername" disable="true" mnemonicParsing="false" onAction="#updateUsername" styleClass="updateButton" text="Update" />
       </children>
       <padding>
          <Insets bottom="20.0" top="20.0" />
@@ -29,8 +27,8 @@
    </HBox>
    <HBox alignment="CENTER" spacing="20.0">
       <children>
-          <TextField fx:id="email" maxHeight="40.0" minHeight="40.0" prefHeight="50.0" prefWidth="400.0" promptText="Email" styleClass="StyledTextBox" onKeyReleased="#checkEmailValidation"/>
-         <Button fx:id="updateEmail" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updateEmail" disable="true"/>
+          <TextField fx:id="email" maxHeight="40.0" minHeight="40.0" onKeyReleased="#checkEmailValidation" prefHeight="50.0" prefWidth="400.0" promptText="Email" styleClass="StyledTextBox" />
+         <Button fx:id="updateEmail" disable="true" mnemonicParsing="false" onAction="#updateEmail" styleClass="updateButton" text="Update" />
       </children>
       <padding>
          <Insets bottom="20.0" />
@@ -41,8 +39,8 @@
    </HBox>
    <HBox alignment="CENTER" spacing="20.0">
       <children>
-          <PasswordField fx:id="password" maxHeight="40.0" minHeight="40.0" prefHeight="50.0" prefWidth="400.0" promptText="Password" styleClass="StyledTextBox" onKeyReleased="#checkPassValidation"/>
-         <Button fx:id="updatePassword" mnemonicParsing="false" styleClass="updateButton" text="Update" onAction="#updatePassword" disable="true"/>
+          <PasswordField fx:id="password" maxHeight="40.0" minHeight="40.0" onKeyReleased="#checkPassValidation" prefHeight="50.0" prefWidth="400.0" promptText="Password" styleClass="StyledTextBox" />
+         <Button fx:id="updatePassword" disable="true" mnemonicParsing="false" onAction="#updatePassword" styleClass="updateButton" text="Update" />
       </children>
       <padding>
          <Insets bottom="20.0" />
@@ -50,5 +48,25 @@
       <VBox.margin>
          <Insets />
       </VBox.margin>
+   </HBox>
+   <HBox alignment="CENTER_RIGHT">
+      <padding>
+         <Insets right="61.0" />
+      </padding>
+   </HBox>
+   <HBox alignment="CENTER" layoutX="10.0" layoutY="236.0" spacing="20.0">
+      <children>
+         <TextField fx:id="sureDelete" maxHeight="40.0" minHeight="40.0" onKeyReleased="#checkDeleteAccount" prefHeight="40.0" prefWidth="360.0" promptText="Type &quot;I'm sure to delete my account&quot;" styleClass="StyledTextBox" />
+         <Button fx:id="deleteAccountButton" alignment="CENTER" disable="true"
+                 mnemonicParsing="false" prefHeight="28.0" prefWidth="103.0"
+                 style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-font-family: 'Roboto'; -fx-border-color: #c62828;"
+                 styleClass="DeleteButton" text="Delete Account" onAction="#deleteAccount">
+            <HBox.margin>
+               <Insets />
+            </HBox.margin></Button>
+      </children>
+      <padding>
+         <Insets bottom="20.0" />
+      </padding>
    </HBox>
 </VBox>

@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
 import java.sql.*;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +26,11 @@ public class ProfController {
     Button updateEmail;
     @FXML
     Button updatePassword;
+    @FXML
+    Button deleteAccountButton;
+    @FXML
+    TextField sureDelete;
+
 
     public void initialize() throws SQLException {
         username.setText(Account.getName());
@@ -74,5 +80,16 @@ public class ProfController {
             password.setStyle("-fx-border-width: 0");
             updatePassword.setDisable(false);
         }
+    }
+
+    public void checkDeleteAccount(KeyEvent keyEvent) {
+        if(Objects.equals(sureDelete.getText(), "I'm sure to delete my account"))
+            deleteAccountButton.setDisable(false);
+        else
+            deleteAccountButton.setDisable(true);
+    }
+
+    public void deleteAccount(ActionEvent event) {
+        Account.deleteAccount();
     }
 }
